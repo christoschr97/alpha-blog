@@ -12,6 +12,9 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
+  def edit
+  end
+  
   def create
     @article = Article.new(article_params)
     # render plain: @article.inspect
@@ -23,9 +26,6 @@ class ArticlesController < ApplicationController
     else
       render 'new'
     end
-  end
-
-  def edit
   end
 
   def update
@@ -48,7 +48,6 @@ class ArticlesController < ApplicationController
     end
 
     def article_params
-      byebug
       params.require(:article).permit(:title, :description)
     end
       
