@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+    has_many :articles
     REGEX_PATTERN = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     validates :username, presence: true, 
                          uniqueness: { case_sensitive: false }, 
