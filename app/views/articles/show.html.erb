@@ -8,13 +8,15 @@
           <% if @article.user %>
             by <%= @article.user.username%>
             <%= link_to gravatar_for(@article.user, size: 100), user_path(@article.user) %>
-          <% end %>   
+          <% end %>
           </div>
           <div class="card-body">
             <h5 class="card-title"> <%= simple_format(@article.title) %></h5>
             <p class="card-text"><%= simple_format(@article.description) %></p>
+            <% if logged_in? && @article.user == current_user %>
             <%= link_to  "Edit Article", edit_article_path(@article), class: 'btn btn-outline-primary' %>
             <%= link_to  "Delete", article_path(@article), method: :delete, data: {confirm: 'Are you sure?'} , class: 'btn btn-outline-danger' %>
+            <% end %>
           </div>
           <div class="card-footer text-muted">
             <small>Created <%= time_ago_in_words(@article.created_at) %>, Edited <%= time_ago_in_words(@article.created_at) %> </small>
@@ -23,4 +25,3 @@
       </div>
     </div>
   </div>
-
